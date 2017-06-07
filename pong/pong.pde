@@ -9,7 +9,8 @@ void draw() {
 }
 
 void drawGameScreen() {
-  // Draw background
+    bgColor = 0;
+   
   // Update Ball Velocity and Resolve Collisions
   // Update Ball and Paddle Positions
   // Draw Ball and Paddles
@@ -21,6 +22,7 @@ void drawBall() {
 }
 
 void drawPaddles() {
+  rect(
   // Display Left and Right paddles in correct position
 }
 
