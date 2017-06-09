@@ -7,13 +7,29 @@ if(ballY<ballRadius) {
 ballY=ballRadius;
 ballVy *= -1;
 }
+if(ballX>displayHeight-ballRadius){
+    ballX=displayHeight-ballRadius;
+ballVx *= -1;
+}
+if(ballX<ballRadius) {
+ballX=ballRadius;
+ballVx *= -1;
+}
+
+
+
+
+
+
+
+
 if(ballX>displayWidth-(paddleWidth+ballRadius)&&((ballY>=rightPaddle)&&(ballY<=rightPaddle+paddleLength))) {
 ballX=displayWidth-(paddleWidth+ballRadius);
-ballVx *= -1;
+ballVx =  BALL_VELOCITY*(ballY-rightPaddle)/buffer;
 }
 if(ballX<ballRadius+paddleWidth&&(ballY>=leftPaddle)&&(ballY<=leftPaddle+paddleLength)) {
 ballX=ballRadius+paddleWidth;
-ballVx *= -1;
+ballVx =  BALL_VELOCITY*(ballY-leftPaddle)/buffer;
 }
   
   // Detect Ball collisions with walls or paddles
@@ -35,8 +51,7 @@ void updatePaddlePosition() {
   if(leftPaddle<0)
   leftPaddle=0;
   
-  if(leftPaddle<paddleLength/2)
-   leftPaddle=paddleLength/2;
+  
   rightPaddle+=RIGHTPADDLE_VELOCITY;
   if (rightPaddle> displayHeight-paddleLength)
   rightPaddle= displayHeight-paddleLength;
@@ -59,11 +74,14 @@ else if(ballX>displayWidth-(paddleWidth+ballRadius)&&((ballY>=rightPaddle)&&(bal
 ballX=displayWidth-(paddleWidth+ballRadius);
 ballVx *= -1;
 }
-
+if(ballX>displayWidth-ballRadius){
+    leftScore+=1;}
 
 if(ballX<ballRadius+paddleWidth&&(ballY>=leftPaddle)&&(ballY<=leftPaddle+paddleLength)) {
 ballX=ballRadius+paddleWidth;
 ballVx *= -1;
-}
+}if(ballX<ballRadius){ 
+  rightScore+=1;} 
+  
 }
   // Resolve Collisions with all other walls

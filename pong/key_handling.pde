@@ -18,6 +18,7 @@ void keyReleased() {
   if (key == START)         start = false;
 }
 void detectKeys(){
+  println(gamestate);
   if(left_up)
   {
     LEFTPADDLE_VELOCITY=-10;
@@ -34,5 +35,12 @@ void detectKeys(){
   {
     RIGHTPADDLE_VELOCITY=10;
   }
-}
-  
+ if(start)
+ {
+   gamestate= 0;
+ }
+  if(reset)
+ {
+   gamestate = 1;
+ }
+} 

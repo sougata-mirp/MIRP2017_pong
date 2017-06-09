@@ -5,13 +5,17 @@ void setup() {
 }
 
 void draw() {
-  drawGameScreen();
+  if (gamestate == 0)
+    background(200);
+  if (gamestate == 1)
+    drawGameScreen();
+  detectKeys();
+ 
 }
 
 void drawGameScreen() {
      background(bgColor);
-  detectKeys();
- 
+  displayScores();
   updateBallVelocity();
   updateBallPosition();
   updatePaddlePosition();
@@ -55,5 +59,7 @@ void resetGame(){
 }
 
 void displayScores() {
+  text(leftScore,100,200);
+  text(rightScore, 300,200);
   // Display Left and Right player Scores
 }
